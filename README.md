@@ -3,6 +3,7 @@
 
 - [Ethereum](#ethereum)
 - [MetaMask](#metamask)
+- [코인 만들기](#코인-만들기)
 ---
 
 ## Ethereum
@@ -20,4 +21,37 @@ CS관점으로 설명하면, 이더리움은 경정론적이지만, 한정되지
 ## MetaMask
 브라우저에서 실행되는 확장 지갑으로 다양한 이더리움 노드와 테스트 블록체인에 연결할 수 있는 웹 기반 지갑이다.
 
+---
 
+## 코인 만들기
+
+### Remix
+솔리디티 언어를 사용하여 **스마트 컨트랙트**를 컴파일/테스트/디버깅/배포할 수 있는 통합 개발 환경.
+
+### OepnZeppelin
+이더리움 네트워크의 모듈식 및 재사용 가능한 **Smart Contract** 세트에 대한 액세스를 제공하는 패키지.
+
+### ERC-20
+Ethereum Request for Comment 20 로 코인의 표준 중 하나다. 
+
+```solidity
+pragma solidity ^0.8.0; // 버전
+
+// 오픈제플린 무설치
+import "https://github.com/OpenZeppelin/openzeppelin-contracts/blob/master/contracts/token/ERC20/ERC20.sol";
+
+// is - 상속
+contract MyToken is ERC20 {
+    // 생성자. 이름, 심볼
+    constructor(string memory name, string memory symbol) ERC20(name, symbol) {
+        // mint 1000개
+        // msg.sender 만든 사람
+        // 10의 18승, 1 이더 단위
+        _mint(msg.sender, 1000*10**uint(decimals()));
+    }
+}
+```
+- Deploy
+    - Injected Web3로 크롬 기반의 메타마스크를 연동.
+    - 메타마스크 승인.
+    - 트랜잭션 진행.
