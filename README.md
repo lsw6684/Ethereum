@@ -5,6 +5,7 @@
 - [Ethereum](#ethereum)
 - [MetaMask](#metamask)
 - [코인 만들기](#코인-만들기)
+- [NFT](#nft)
 ---
 ## Blockchain
 - block : 데이터를 저장하는 단위
@@ -66,3 +67,7 @@ contract MyToken is ERC20 {
     - Injected Web3로 크롬 기반의 메타마스크를 연동.
     - 메타마스크 승인.
     - 트랜잭션 진행.
+
+## NFT
+- [a](#https://opensea.io/assets/matic/0x2953399124f0cbb46d2cbacd8a89cf0599974963/53652640495268935322357122152175540049246147142487809100132255691111630110721)
+- [b](#https://opensea.io/assets/matic/0x2953399124f0cbb46d2cbacd8a89cf0599974963/53652640495268935322357122152175540049246147142487809100132255692211141738506)
