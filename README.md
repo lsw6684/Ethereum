@@ -5,6 +5,7 @@
 - [NFT](#nft)
 - [Ethereum](#ethereum)
 - [MetaMask](#metamask)
+- [Solidity](#solidity)
 - [코인 만들기](#코인-만들기)
 ---
 ## Blockchain
@@ -18,14 +19,16 @@
 ### 비잔틴 장애 허용 Byzantine Fault Tolerance, BFT
 체인의 branch 중에, 위조된 노드가 전체의 3분의 1을 넘기지 않는다면, 이를 제외하고 정직한 합의에 성공할 수 있게끔 한다.
 
+---
+
 ## NFT
 Non-Fungible Token 으로 [블록체인](#블록체인)에 저장된 데이터 단위다. 이름 그대로 고유하며 사진, 비디오, 오디오 등 디지털 파일을 나타내는데 사용할 수 있다.
 
-- 직접 만든 NFT
+- 직접 만든 폴리곤NFT
     - [a](https://opensea.io/assets/matic/0x2953399124f0cbb46d2cbacd8a89cf0599974963/53652640495268935322357122152175540049246147142487809100132255691111630110721)
     - [b](https://opensea.io/assets/matic/0x2953399124f0cbb46d2cbacd8a89cf0599974963/53652640495268935322357122152175540049246147142487809100132255692211141738506)
 
-
+---
 ## Ethereum
 이더리움은 계약을 만들어 주는 블록체인으로 **Smart Contract Flatform**이라 하며, 그 결과는 토큰으로 만들어진다. 이 토큰을 하나만 발행한 것이 [NFT](#nft)이고 **메타버스**의 거래 수단으로 사용된다. <br />
 
@@ -43,6 +46,68 @@ CS관점으로 설명하면, 이더리움은 경정론적이지만, 한정되지
 
 ---
 
+## Solidity
+계약 지향 프로그래밍 언어로 블록체인 프랫폼의 Smart Contract 작성 및 구현에 사용된다.
+- 상태 변수 : DB의 데이터처럼, 이더리움의 블록체인(Contract 저장소)에 영구적으로 저장 된다.
+    - `uint` : 부호 없는 정수로, 양수만 가능.
+        ```solidity
+        uint myUnsignedInteger = 100; 
+        ```
+    - `**` : 지수 연산
+        ```solidity
+        uint myTest = 10**2;    // 100
+        ```
+    - 구조체 : 사용자 정의 타입
+        ```solidity
+        struct 구조체명{
+            타입 변수명,
+            타입 변수명
+        }
+        ```
+    - 배열 : 정적/동적 배열, 구조체 배열, Public Arrays.
+        ```solidity
+        uint[2] fixedArray;     // 2개의 원소를 담을 수 있는 정적 배열
+        uint[] dynamicArray     // 동적 배열
+        Person[] people         // 동적 배열로써 원소를 계속 추가할 수 있다.
+        
+        Person[] public people  // public으로 배열 선언. 솔리디티가 자동으로 getter메소드 생성.
+        // 다른 Contract가 해당 배열을 읽을(쓰기x) 수 있으며 공개 데이터를 저장할 때 사용.
+        ```
+        - push 참고
+        ```solidity
+        Person satoshi = Person(172, "Satoshi");
+        people.push(satoshi);
+        // 위 두 줄을 아래와 같이 사용 가능
+        people.push(Person(16, "Vitalik"));
+        ```
+
+    - 함수 : 기본적으로 public으로 선언된다.
+        - 매개변수 관례 : 언더바(_)를 사용하여 전역 변수와 구별. 필수는 아님.
+            ```solidity
+            function order(string _name, uint _amount) {}
+            ```
+        - private 선언 : 함수명 다음에 작성하며, 함수명 또한 언더바(_)로 시작하여 public 함수와 구별한다.
+            ```solidity
+            uint[] numbers;
+
+            function _addToArray(uint _number) private {
+                numbers.push(_number);
+            }
+            ```
+        - 반환값 : 반환 필요 시 `returns`과 자료형 선언
+            ```solidity
+            function Hello() public returns (uint) { 
+                return 1;
+            }
+            ```
+    - 함수 제어자
+        - `view` : 데이터를 조회만 할 뿐 변경하지 않음을 의미한다.
+            ```solidity
+            function sayHello() public view returns (string) {}
+            ```
+        - `pure` : 함수가 조회를 포함한 어떤 접근도 하지 않음을 의미하며 인자에 따른 반환값 변동만이 존재한다.
+    
+---
 ## 코인 만들기
 
 ### Remix
