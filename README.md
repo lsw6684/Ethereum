@@ -102,12 +102,24 @@ CS관점으로 설명하면, 이더리움은 경정론적이지만, 한정되지
             return 1;
         }
         ```
+    - keccak256 : SHA3의 한 버전인 내장 해시 함수. 입력 스트링을 **256비트 16진수**로 매핑한다.
 - 함수 제어자
     - `view` : 데이터를 조회만 할 뿐 변경하지 않음을 의미한다.
         ```solidity
         function sayHello() public view returns (string) {}
         ```
     - `pure` : 함수가 조회를 포함한 어떤 접근도 하지 않음을 의미하며 인자에 따른 반환값 변동만이 존재한다.
+- 형 변환
+    ```solidity
+    uint8   a = 5;
+    uint    b = 6;
+    
+    uint8 c = a * b;
+    // a * b는 uint8이 아닌, uint를 반환하기 때문에 에러.
+    
+    uint8 c = a * uint8(b);
+    ```
+
     
 ---
 ## 코인 만들기
