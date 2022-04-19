@@ -119,7 +119,12 @@ CS관점으로 설명하면, 이더리움은 경정론적이지만, 한정되지
     
     uint8 c = a * uint8(b);
     ```
-
+- 이벤트
+    ```solidity
+    // 이벤트 선언
+    event IntegersAdded(uint x, uint y, uint result);
+    
+    ```
     
 ---
 ## 코인 만들기
